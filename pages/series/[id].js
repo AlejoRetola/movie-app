@@ -60,13 +60,7 @@ export default function SeriesPage({ seriesInfo, seriesTrailer, similarSeries })
               </div>
             </div>
             <div className="md:w-[480px]  h-4/6 flex justify-center items-center  w-full mb-4">
-              <Image
-                src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
-                width={300}
-                height={200}
-
-                // className="h-full w-3/5 xs:w-[320px]  md:w-full md:h-4/5 object-contain"
-              />
+              <Image src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`} width={300} height={200} className="h-full w-3/5 xs:w-[320px]  md:w-full md:h-4/5 object-contain" />
             </div>
           </div>
           <h2 className="text-center mt-2 text-2xl">Similar series</h2>
@@ -118,6 +112,6 @@ export const getStaticPaths = async () => {
   // cant use the ID to get similar Movies and prerender the similar-movies pages :(
   return {
     paths: [],
-    fallback: true,
+    fallback: "blocking",
   };
 };

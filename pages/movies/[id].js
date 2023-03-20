@@ -20,8 +20,8 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
       <Head>
         <title>{movie.title}</title>
       </Head>
-      <div className="absolute w-full h-full  z-0">
-        <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} className="w-full h-full object-cover "></img>
+      <div className="absolute w-screen h-full  z-0">
+        <Image src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} fill priority className="w-full h-full object-cover " />
       </div>
       <div className="flex flex-col">
         <div>
@@ -55,7 +55,7 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
               </div>
             </div>
             <div className="md:w-[480px]  h-4/6 flex justify-center items-center  w-full mb-4">
-              <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="h-full w-3/5 xs:w-[320px]  md:w-full md:h-[95%]  object-contain"></img>
+              <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="h-full w-3/5 xs:w-[320px]  md:w-full md:h-[95%]  object-contain" width={300} height={200} />
             </div>
           </div>
           <h2 className="text-center mt-2 text-2xl">Similar Movies</h2>
@@ -67,7 +67,7 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
                     <div className="overflow-ellipsis whitespace-nowrap overflow-x-hidden w-44 text-center">{title}</div>
                     <div className="max-w-[280px]">
                       <Link href={`/movies/${id}`}>
-                        <img src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} loading="lazy" className="w-full h-full object-cover"></img>
+                        <Image src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} width={280} height={150} className="w-full h-full object-cover" />
                       </Link>
                     </div>
                   </div>
@@ -106,6 +106,6 @@ export async function getStaticProps(context) {
 export async function getStaticPaths(context) {
   return {
     paths: [],
-    fallback: true,
+    fallback: "blocking",
   };
 }

@@ -2,7 +2,7 @@ import Header from "./Header";
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className="min-w-screen">
       <Header />
       {children}
     </div>

@@ -11,7 +11,6 @@ import { useState } from "react";
 export default function SeriesPage({ seriesInfo, seriesTrailer, similarSeries }) {
   const series = seriesInfo;
   const genres = series.genres;
-  console.log(series, genres);
   const [toggled, setToggled] = useState(false);
   const handleToggle = () => {
     setToggled(!toggled);
@@ -24,7 +23,9 @@ export default function SeriesPage({ seriesInfo, seriesTrailer, similarSeries })
         <title>{series.title}</title>
       </Head>
       <div className="absolute w-full h-full  z-0">
-        <Image src={`https://image.tmdb.org/t/p/original/${series.backdrop_path}`} fill className="w-full h-full object-cover " />
+        <Image src={`https://image.tmdb.org/t/p/original/${series.poster_path}`} fill priority className="w-full h-full object-cover md:hidden" />
+
+        <Image src={`https://image.tmdb.org/t/p/original/${series.backdrop_path}`} fill priority className="w-full h-full object-cover hidden md:block " />
       </div>
       <div className="flex flex-col">
         <div>
@@ -59,12 +60,12 @@ export default function SeriesPage({ seriesInfo, seriesTrailer, similarSeries })
                 </button>
               </div>
             </div>
-            <div className="md:w-[480px]  h-4/6 flex justify-center items-center  w-full mb-4">
+            <div className="md:w-[480px]  h-4/6 hidden md:flex justify-center items-center  w-full mb-4">
               <Image src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`} width={300} height={200} className="h-full w-3/5 xs:w-[320px]  md:w-full md:h-4/5 object-contain" />
             </div>
           </div>
           <h2 className="text-center mt-2 text-2xl">Similar series</h2>
-          <div className="flex gap-6  p-4  overflow-x-auto no-scrollbar relative z-10 w-full h-full justify-center">
+          <div className="flex gap-6  p-4  overflow-x-auto no-scrollbar relative z-10 w-full h-full ">
             {similarSeries.map(({ id, name, backdrop_path }, index) => {
               if (index < 8 && backdrop_path) {
                 return (

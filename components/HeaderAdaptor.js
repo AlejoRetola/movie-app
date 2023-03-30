@@ -27,15 +27,21 @@ function HeaderMobile() {
   return (
     <div className="visible flex flex-col md:invisible">
       <RxHamburgerMenu className="text-2xl text-white transition delay-100 " id="hamburger-button" onClick={handleClick} />
-      <div id="mobile-menu" className="absolute z-10 transition delay-100 translate-y-11 -translate-x-96  py-2 pl-2 border-blue-300 border-y-2 border-r-2 bg-gray-900 w-5/12 h-24 ">
+      <div id="mobile-menu" className="absolute z-20 transition delay-100 translate-y-11 -translate-x-96  py-2 pl-2 border-blue-300 border-y-2 border-r-2 bg-gray-900 w-5/12 h-24 ">
         <li>
-          <Link href="/">Inicio</Link>
+          <Link href="/" onClick={handleClick}>
+            Inicio
+          </Link>
         </li>
         <li>
-          <Link href="/movies">Peliculas</Link>
+          <Link href="/movies" onClick={handleClick}>
+            Peliculas
+          </Link>
         </li>
         <li>
-          <Link href="/series">Series</Link>
+          <Link href="/series" onClick={handleClick}>
+            Series
+          </Link>
         </li>
       </div>
     </div>

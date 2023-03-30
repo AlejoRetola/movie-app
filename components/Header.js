@@ -25,7 +25,7 @@ export default function Headers() {
           <input
             type="text"
             placeholder="Search"
-            className="outline-0 focus:ring-blue-600 focus:w-36 focus:ring-1 w-28 pl-1 text-sm duration-200 ease-out 2xl:text-3xl 2xl:w-52 2xl:focus:w-60"
+            className="outline-0  focus:ring-blue-600 focus:w-36 focus:ring-1 w-28 pl-1 text-sm duration-200 ease-out 2xl:text-3xl 2xl:w-52 2xl:focus:w-60"
             onChange={() => handleChange(event)}
           ></input>
           <Link

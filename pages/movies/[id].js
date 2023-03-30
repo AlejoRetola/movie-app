@@ -21,7 +21,9 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
         <title>{movie.title}</title>
       </Head>
       <div className="absolute w-full h-full  z-0">
-        <Image src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} fill priority className="w-full h-full object-cover " />
+        <Image src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} fill priority className="w-full h-full object-cover md:hidden" />
+
+        <Image src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} fill priority className="w-full h-full object-cover hidden md:block " />
       </div>
       <div className="flex flex-col">
         <div>
@@ -91,9 +93,11 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
 }
 
 export async function getStaticProps(context) {
+  console.log(context.params.id);
   const movieInfo = await searchMovie(context.params.id);
   const movieTrailer = await getMovieTrailer(context.params.id);
   const similarMovies = await getSimilar(context.params.id);
+
   return {
     props: {
       movieInfo,

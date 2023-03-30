@@ -54,7 +54,7 @@ export const getMovieTrailer = async (id) => {
   let urlKey = "";
   const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=c646272113940d36558f953542270d34&language=en-US`).then((res) => res.json());
 
-  if (url !== "Trailer") {
+  if (url !== "Trailer" && response.id !== 477962) {
     response.results.map((movie, index) => {
       if (movie.type === "Trailer") {
         url = movie.type;

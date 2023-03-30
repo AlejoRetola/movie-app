@@ -6,9 +6,9 @@ export default function Generator({ data, type, title }) {
       <h1 className="mt-8 text-3xl mx-4 ">{title}</h1>
       <div className="flex gap-10 p-4 mb-4 overflow-x-auto no-scrollbar">
         {data.map(({ id, title, name, poster_path }) => (
-          <div key={id} className="flex flex-col items-center min-w-44 ">
-            <div className="overflow-ellipsis whitespace-nowrap overflow-x-hidden w-44 text-center">{title || name}</div>
-            <div className="max-w-44 mt-4">
+          <div key={id} className="flex flex-col items-center min-w-44 group transition delay-300 ease-in">
+            <div className="overflow-ellipsis whitespace-nowrap overflow-x-hidden w-44 text-center  group-hover:text-blue-500 group-hover:scale-105">{title || name}</div>
+            <div className="max-w-44 mt-4 group-hover:scale-105  ">
               <Link
                 // href={`./${type}/${id}`}
                 href={{

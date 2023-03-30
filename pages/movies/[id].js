@@ -20,7 +20,7 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
       <Head>
         <title>{movie.title}</title>
       </Head>
-      <div className="absolute w-screen h-full  z-0">
+      <div className="absolute w-full h-full  z-0">
         <Image src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} fill priority className="w-full h-full object-cover " />
       </div>
       <div className="flex flex-col">
@@ -30,7 +30,7 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
                flex-col items-center "
           >
             <div className=" md:w-[400px] lg:w-2/5 h-5/6 flex justify-center items-center w-full ">
-              <div className="w-full h-auto  flex flex-col  items-start justify-center  bg-black opacity-90  py-6 px-2 mx-3  rounded-md ">
+              <div className="w-[90%] h-auto  flex flex-col  items-start justify-center  bg-black opacity-90  py-6 px-2 mx-auto  rounded-md ">
                 <span className="bg-green-500 py-1 px-2 rounded text-xs font-bold mx-1">{movie.status}</span>
                 <h1 className="text-3xl m-1">{movie.title}</h1>
                 <div className="flex flew-row gap-2 text-xs m-1">
@@ -46,28 +46,28 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
                   <Image src={star} alt="star" width={16} className="flex items-center justify-center text-center" />
                   <p className="text-[12px]">Rating {movie.vote_average}</p>
                 </div>
-                <h2 className="ml-2">Description</h2>
-                <p className="m-2 max-h-[400px] sm:max-h-60 text-ellipsis overflow-y-auto ">{movie.overview ? movie.overview : "There is no Description"}</p>
+                <h2 className="ml-2 ">Description:</h2>
+                <p className="m-2 h-full sm:max-h-60 text-ellipsis overflow-y-auto ">{movie.overview ? movie.overview : "There is no Description"}</p>
                 <button className="bg-blue-600 px-2 py-1 rounded-lg m-1 flex justify-center items-center gap-1" onClick={handleToggle}>
                   <Image src={youtube} alt="youtube-icon" width={22} />
                   <span className="text-sm">Trailer</span>
                 </button>
               </div>
             </div>
-            <div className="md:w-[480px]  h-4/6 flex justify-center items-center  w-full mb-4">
-              <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="h-full w-3/5 xs:w-[320px]  md:w-full md:h-[95%]  object-contain" width={300} height={200} />
+            <div className="md:w-[480px]  h-4/6 md:flex justify-center items-center hidden  w-full mb-4">
+              <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} priority className="h-full w-3/5 xs:w-[320px]  md:w-full md:h-[95%]  object-contain" width={300} height={200} />
             </div>
           </div>
           <h2 className="text-center mt-2 text-2xl">Similar Movies</h2>
-          <div className="flex gap-6  p-4  overflow-x-auto relative z-10 w-full h-full justify-center">
+          <div className="flex gap-6  p-4  overflow-x-auto no-scrollbar relative z-10 min-w-screen h-full ">
             {similarMovies.map(({ id, title, backdrop_path }, index) => {
               if (index < 8 && backdrop_path) {
                 return (
-                  <div key={id} className="max-w-xl max-h-[400px] flex flex-col items-center ">
-                    <div className="overflow-ellipsis whitespace-nowrap overflow-x-hidden w-44 text-center">{title}</div>
-                    <div className="max-w-[280px]">
+                  <div key={id} className="max-w-xl max-h-[400px] flex flex-col items-center group transition delay-300 ease-in ">
+                    <div className="overflow-ellipsis whitespace-nowrap overflow-x-hidden w-44 text-center pb-2 group-hover:text-blue-500 group-hover:scale-105">{title}</div>
+                    <div className="max-w-[280px] w-60 h-32 relative group-hover:scale-105">
                       <Link href={`/movies/${id}`}>
-                        <Image src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} width={280} height={150} className="w-full h-full object-cover" />
+                        <Image src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} fill className="w-full h-full object-cover" />
                       </Link>
                     </div>
                   </div>
@@ -79,10 +79,10 @@ export default function MoviesPage({ movieInfo, movieTrailer, similarMovies }) {
 
         {toggled ? (
           <div className="h-full w-full absolute flex justify-center items-center flex-col bg-opacity-90 bg-black pb-10 z-20">
-            <div className="flex justify-end w-3/6 ">
+            <div className="flex justify-end w-full md:w-3/6 ">
               <Image src={equis} alt="X" width={28} onClick={handleToggle} className="cursor-pointer mb-1 " />
             </div>
-            <iframe src={`https://www.youtube.com/embed/${movieTrailer}`} className="w-3/6 h-96" allowFullScreen></iframe>
+            <iframe src={`https://www.youtube.com/embed/${movieTrailer}`} className="w-[95%] h-64 md:w-3/6 md:h-96" allowFullScreen></iframe>
           </div>
         ) : null}
       </div>

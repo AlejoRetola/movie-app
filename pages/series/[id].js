@@ -64,13 +64,13 @@ export default function SeriesPage({ seriesInfo, seriesTrailer, similarSeries })
             </div>
           </div>
           <h2 className="text-center mt-2 text-2xl">Similar series</h2>
-          <div className="flex gap-6  p-4  overflow-x-auto relative z-10 w-full h-full justify-center">
+          <div className="flex gap-6  p-4  overflow-x-auto no-scrollbar relative z-10 w-full h-full justify-center">
             {similarSeries.map(({ id, name, backdrop_path }, index) => {
               if (index < 8 && backdrop_path) {
                 return (
-                  <div key={id} className="max-w-xl max-h-[400px] flex flex-col items-center">
-                    <div className="overflow-ellipsis whitespace-nowrap overflow-x-hidden w-44 text-center">{name}</div>
-                    <div className="max-w-[280px]">
+                  <div key={id} className="max-w-xl max-h-[400px] flex flex-col items-center group transition delay-300 ease-in ">
+                    <div className="overflow-ellipsis whitespace-nowrap overflow-x-hidden w-44 text-center pb-2 group-hover:text-blue-500 group-hover:scale-105">{name}</div>
+                    <div className="max-w-[280px] w-60 h-32 relative group-hover:scale-105">
                       <Link href={`/series/${id}`}>
                         <Image src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} width={280} height={150} className="w-full h-full object-cover" />
                       </Link>
